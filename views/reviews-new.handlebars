@@ -3,6 +3,7 @@
 <form method="POST" action="/reviews">
   <fieldset>
     <legend>New Review</legend>
+
     <!-- TITLE -->
     <p>
       <label for="title">Title</label><br>
@@ -14,6 +15,17 @@
       <label for="movieTitle">Movie Title</label><br>
       <input type="text" name="movieTitle" />
     </p>
+
+    <!-- RATING -->
+    <p>
+      <label for="rating">Rating</label><br>
+      <select name="rating" size="1"/>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
 
     <!-- DESCRIPTION -->
     <p>
