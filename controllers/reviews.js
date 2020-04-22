@@ -23,10 +23,12 @@ module.exports = function(app) {
 	
 	// CREATE
 	app.post('/reviews', (req, res) => {
-	  Review.create(req.body).then((review) => {
+	  Review.create(req.body)
+	  .then((review) => {
 	    console.log(review);
 	    res.redirect(`/reviews/${review._id}`);
-	  }).catch((err) => {
+	  })
+	  .catch((err) => {
 	    console.log(err.message);
 	  })
 	});
@@ -68,9 +70,11 @@ module.exports = function(app) {
 	// DELETE
 	app.delete('/reviews/:id', function (req, res) {
 	  console.log("DELETE review")
-	  Review.findByIdAndRemove(req.params.id).then((review) => {
+	  Review.findByIdAndRemove(req.params.id)
+	  .then((review) => {
 	    res.redirect('/');
-	  }).catch((err) => {
+	  })
+	  .catch((err) => {
 	    console.log(err.message);
 	  })
 	})
