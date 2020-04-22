@@ -1,9 +1,20 @@
 <!-- reviews-index -->
-<h1>Reviews</h1>
+<h2>Reviews</h2>
 
-<a href="/reviews/new">New Review</a>
-
-{{#each reviews}}
-  <h2><a href="/reviews/{{this._id}}">({{this.rating}}/5) {{this.title}}</h2>
-  <small>{{this.movieTitle}}</small>
-{{/each}}
+<div class="row">
+	{{#each reviews}}
+	<div class="col-md-3">
+		<div class="card">
+		<div class="card-body">
+			<div style="clear: both">
+				<h6 style="float: left" class="card-subtitle">({{this.rating}}/5)</h6>
+				<h6 style="float: right" class="card-subtitle">{{this.movieTitle}}</h6>
+			</div>
+			<hr />
+			<h4 class="card-text">{{this.title}}</h4>
+  			<a href="/reviews/{{this._id}}" class="stretched-link"></a>
+  		</div>
+  		</div>
+  	</div>
+	{{/each}}
+</div>

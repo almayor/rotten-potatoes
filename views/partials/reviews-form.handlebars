@@ -1,41 +1,41 @@
 <!-- views/partials/reviews-form.handlebars -->
 
 <fieldset>
-  <legend>{{title}}</legend>
+  <legend>Edit Review</legend>
   <!-- TITLE -->
-  <p>
+  <div class="form-group">
     <label for="review-title">Title</label><br>
-    <input id="review-title" type="text" name="title" value="{{review.title}}"/>
-  </p>
+    <input class="form-control" id="review-title" type="text" name="title" value="{{review.title}}"/>
+  </div>
 
   <!-- MOVIE TITLE -->
-  <p>
+  <div class="form-group">
     <label for="movie-title">Movie Title</label><br>
-    <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-  </p>
+    <input class="form-control" id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
+  </div>
 
   <!-- RATING -->
-    <p>
-      <label for="rating">Rating</label><br>
-      <select name="rating" size="1"/>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5" selected>5</option>
-      </select>
-  </p>
+  <div class="form-group">
+    <label for="rating">Rating</label><br>
+    <select size="1" id="rating-select" class="form-control">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected>5</option>
+    </select>
+  </div>
 
   <!-- DESCRIPTION -->
-  <p>
+  <div class="form-group">
     <label for="review-description">Description</label><br>
-    <textarea id="review-description" name="description" rows="10" />{{review.description}}</textarea>
-  </p>
+    <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
+  </div>
 </fieldset>
 
 <script>
-var temp = review.rating;
-var mySelect = document.getElementById('mySelect');
+var temp = `{{review.rating}}`;
+var mySelect = document.getElementById('rating-select');
 
 for(var i, j = 0; i = mySelect.options[j]; j++) {
     if(i.value == temp) {
