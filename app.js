@@ -13,6 +13,7 @@ app.use(methodOverride('_method')); // override with POST having ?_method=DELETE
 
 const reviews = require('./controllers/reviews')(app);
 const comments = require('./controllers/comments')(app);
+const movies = require('./controllers/movies')(app);
 
 mongoose.connect(
 	process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {

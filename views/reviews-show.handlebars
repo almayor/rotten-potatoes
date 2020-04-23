@@ -2,27 +2,36 @@
 
 <div class="row mb-3">
   <div class="col-md-6 col-md-offset-3">
+
+    <!-- Review -->
     <h3>{{review.title}}</h3>
     <h6>{{review.movieTitle}}</h6>
-    <p>
-    	<b>{{review.rating}} / 5</b>
-    	<br><br>
-    	{{review.description}}
+    <b>{{review.rating}} / 5</b>
+    <p style="
+        white-space: pre-line;
+        padding-top: 3px;
+        padding-bottom: 5px">
+        {{review.description}}
     </p>
-    <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
-    <p><form method="POST" action="/reviews/{{review._id}}?_method=DELETE">
-        <button class="btn btn-primary" type="submit">Delete</button>
-    </form></p>
+
+    <!-- Buttons -->
+    <p>
+        <!-- <a href="/reviews/{{review._id}}/edit">Edit</a> -->
+        <form align="right" method="POST" action="/reviews/{{review._id}}?_method=DELETE">
+        <a href="/reviews/{{review._id}}/edit" class="btn btn-link">Edit</a>
+        <button class="btn btn-link" type="submit">Delete</button>
+        </form>
+    </p>
 
     <!-- Comment form -->
     {{> comment-form}}
-
-    <hr>
 
     <!-- Show Comments -->
     {{#each comments}}
       {{> comment}}
     {{/each}}
+
+    <hr>
 
   </div>
 </div>

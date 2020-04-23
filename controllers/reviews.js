@@ -6,11 +6,11 @@ const Comment = require('../models/comment');
 module.exports = function(app) {
 
 	// INDEX
-	app.get('/', (req, res) => {
-		Review.find().lean()
-		.then(reviews => res.render('reviews-index', {reviews: reviews}))
-		.catch(err => console.log(err))
-  	});
+	// app.get('/', (req, res) => {
+	// 	Review.find().lean()
+	// 	.then(reviews => res.render('reviews-index', {reviews: reviews}))
+	// 	.catch(err => console.log(err))
+ //  	});
 
 	// NEW
 	app.get('/reviews/new', (req, res) => {
