@@ -17,7 +17,6 @@
   <!-- RATING -->
   <div class="form-group">
     <label for="rating">Rating</label><br>
-    <!-- <select size="1" id="rating-select" class="form-control"> -->
     <select id="rating" name="rating" class="form-control">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -34,9 +33,9 @@
   </div>
 </fieldset>
 
-<!-- <script>
+<script>
 var temp = `{{review.rating}}`;
-var mySelect = document.getElementById('rating-select');
+var mySelect = document.getElementById('rating');
 
 for(var i, j = 0; i = mySelect.options[j]; j++) {
     if(i.value == temp) {
@@ -44,4 +43,4 @@ for(var i, j = 0; i = mySelect.options[j]; j++) {
         break;
     }
 }
-</script> -->
+</script>
