@@ -13,12 +13,14 @@ app.use(methodOverride('_method')); // override with POST having ?_method=DELETE
 
 const reviews = require('./controllers/reviews')(app);
 
-mongoose.connect('mongodb://localhost/rotten-potatoes', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-});
+mongoose.connect(
+	process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	}
+);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('App listening on port 3000!');
 })
 
