@@ -1,6 +1,6 @@
 <!-- views/reviews-show.handlebars -->
 
-<div class="row">
+<div class="row mb-3">
   <div class="col-md-6 col-md-offset-3">
     <h3>{{review.title}}</h3>
     <h6>{{review.movieTitle}}</h6>
@@ -16,6 +16,13 @@
 
     <!-- Comment form -->
     {{> comment-form}}
+
+    <hr>
+
+    <!-- Show Comments -->
+    {{#each comments}}
+      {{> comment}}
+    {{/each}}
 
   </div>
 </div>

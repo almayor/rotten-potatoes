@@ -17,37 +17,37 @@ chai.use(chaiHttp);
 
 describe('Reviews', ()  => {
 
-  // // TEST NOT FOUND
-  // it('should index ALL reviews on / GET', (done) => {
-  //   chai.request(server)
-  //       .get('/nonexisting-page')
-  //       .end((err, res) => {
-  //         res.should.have.status(404);
-  //         done();
-  //       });
-  // });
+  // TEST NOT FOUND
+  it('should index ALL reviews on / GET', (done) => {
+    chai.request(server)
+        .get('/nonexisting-page')
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+  });
 
-  // // TEST INDEX
-  // it('should index ALL reviews on / GET', (done) => {
-  //   chai.request(server)
-  //     .get('/')
-  //     .end((err, res) => {
-  //       res.should.have.status(200);
-  //       res.should.be.html;
-  //       done();
-  //     });
-  // });
+  // TEST INDEX
+  it('should index ALL reviews on / GET', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.html;
+        done();
+      });
+  });
 
-  // // TEST NEW
-  // it('should display new form on /reviews/new GET', (done) => {
-  //   chai.request(server)
-  //     .get(`/reviews/new`)
-  //     .end((err, res) => {
-  //       res.should.have.status(200);
-  //       res.should.be.html
-  //       done();
-  //     });
-  // });
+  // TEST NEW
+  it('should display new form on /reviews/new GET', (done) => {
+    chai.request(server)
+      .get(`/reviews/new`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.html
+        done();
+      });
+  });
 
   // TEST CREATE
   it('should create a SINGLE review on /reviews POST', (done) => {

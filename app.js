@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method')); // override with POST having ?_method=DELETE or ?_method=PUT
 
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 mongoose.connect(
 	process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {
