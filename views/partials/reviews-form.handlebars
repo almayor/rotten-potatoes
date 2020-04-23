@@ -26,21 +26,15 @@
     </select>
   </div>
 
+  <script>
+  // select current movie rating in the form
+    if (`{{review.rating}}`)
+      document.getElementById('rating').selectedIndex = `{{review.rating}}` - 1;
+  </script>
+
   <!-- DESCRIPTION -->
   <div class="form-group">
     <label for="review-description">Description</label><br>
     <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
   </div>
 </fieldset>
-
-<script>
-var temp = `{{review.rating}}`;
-var mySelect = document.getElementById('rating');
-
-for(var i, j = 0; i = mySelect.options[j]; j++) {
-    if(i.value == temp) {
-        mySelect.selectedIndex = j;
-        break;
-    }
-}
-</script>
