@@ -1,6 +1,7 @@
 // movies.js
 
 const API_KEY = "d6d213e27bfb10d52d43288fb95ef788"
+const Review = require('../models/review')
 
 module.exports = function (app) {
 
@@ -31,11 +32,12 @@ module.exports = function (app) {
         Promise.all([
             moviedb.movieInfo({ id: req.params.id }),
             moviedb.movieTrailers({ id: req.params.id }),
+            Review.find({ movieId: req.params.id }).lean()
         ])
         .then(responses => {
-            const [movie, videos] = responses;
+            const [movie, videos, reviews] = responses;
             movie.trailer_youtube_id = videos.youtube[0].source;
-            res.render('movies-show', { movie: movie });
+            res.render('movies-show', { movie: movie, reviews: reviews });
         })
         .catch(console.error)
     })

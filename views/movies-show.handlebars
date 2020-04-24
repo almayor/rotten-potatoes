@@ -1,3 +1,6 @@
+<div class="text-right">
+    <a href="/movies/{{movie.id}}/reviews/new" class="btn btn-primary">New Review</a>
+</div>
 <div class="row">
     <div class="col-sm-4">
         <img class="img-responsive" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}"/>
@@ -9,5 +12,11 @@
     <div class="col-sm-12">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
+    </div>
+    <div class="col-sm-12">
+        <h1 class="col-sm-6 col-sm-offset-3">Reviews</h1>
+        {{#each reviews}}
+            {{> review}}
+        {{/each}}
     </div>
 </div>

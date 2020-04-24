@@ -5,11 +5,11 @@ const Comment = require('../models/comment');
 module.exports = (app) => {
 
 	// CREATE Comment
-    app.post('/reviews/comments', (req, res) => {
+    app.post('/reviews/:reviewId/comments', (req, res) => {
         Comment.create(req.body)
-        .then((comment) => {
+        .then(comment => {
             console.log(comment);
-            res.redirect(`/reviews/${comment.reviewId}`);
+            res.redirect(`/reviews/${req.params.reviewId}`);
         })
         .catch((err) => {
             console.log(err.message);
@@ -17,11 +17,10 @@ module.exports = (app) => {
     });
 
     // DELETE
-    app.delete('/reviews/comments/:id', function (req, res) {
-        console.log("DELETE comment")
+    app.delete('/reviews/:reviewId/comments/:id', function (req, res) {
         Comment.findByIdAndRemove(req.params.id)
-        .then((comment) => {
-            res.redirect(`/reviews/${comment.reviewId}`);
+        .then(comment => {
+            res.redirect(`/reviews/${req.params.reviewId}`);
         })
         .catch((err) => {
             console.log(err.message);

@@ -2,7 +2,7 @@
 <div class="row">
     {{#each movies as |movie|}}
         <div class="card">
-            <div class="col-md-3 card-body">
+            <div class="col-md-11 card-body">
                 <h4 class="card-title">{{movie.title}}</h4>
                 <div class="container">
                 	{{#each movie.genre_names as |genre|}}
@@ -11,7 +11,7 @@
                 		</span>
                		{{/each}}
                 </div>
-                <a href="/movies/{{movie.id}}"><img alt="{{movie.title}}" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" title="{{movie.title}}"></a>
+                <a href="/movies/{{movie.id}}"><img alt="{{movie.title}}" src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" title="{{movie.title}}"></a>
             </div>
         </div>
     {{/each}}
