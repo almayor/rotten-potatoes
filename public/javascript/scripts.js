@@ -60,3 +60,22 @@ function deleteComment() {
     })
   })
 }
+
+if (document.querySelectorAll('.delete-review')) {
+    document.querySelectorAll('.delete-review').forEach((reviewElement) => {
+        reviewElement.addEventListener('click', (e) => {
+            console.log("click!")
+            let reviewId = e.target.getAttribute('data-review-id')
+
+            axios.delete(`/admin/reviews/${reviewId}`)
+                .then(response => {
+                    console.log("response: ",response);
+                    review = document.getElementById(reviewId)
+                    review.parentNode.removeChild(review); // OR review.style.display = 'none';
+                }).catch((err) => {
+                    console.log(err)
+                    alert('There was an error deleting this review.')
+                })
+        })
+    })
+}

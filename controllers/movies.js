@@ -26,7 +26,6 @@ module.exports = function (app) {
                     id: id
                 }));
 
-            console.dir(movies[0].genres);
         	res.render('movies-index', { movies: movies });
         })
         .catch(console.error)
