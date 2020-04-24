@@ -35,9 +35,7 @@ module.exports = function(app) {
 	// EDIT
 	app.get('/reviews/:id/edit', (req, res) => {
 	  Review.findById(req.params.id).lean()
-	  .then(review => res.render('reviews-edit', {
-	  	review: review, title: "Edit Review"
-	  }))
+	  .then(review => res.render('reviews-edit', { review: review }))
 	  .catch(err => console.log(err.message))
 	});
 

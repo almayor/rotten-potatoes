@@ -20,10 +20,12 @@ module.exports = (app) => {
     app.delete('/reviews/:reviewId/comments/:id', function (req, res) {
         Comment.findByIdAndRemove(req.params.id)
         .then(comment => {
-            res.redirect(`/reviews/${req.params.reviewId}`);
+            console.log("Deleted comment");
+            res.status(200).send({ comment: comment });
         })
         .catch((err) => {
             console.log(err.message);
+            res.status(400).send({ err: err });
         })
     })
 

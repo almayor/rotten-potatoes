@@ -16,22 +16,47 @@ if (document.getElementById('new-comment')) {
           document.getElementById('new-comment').reset();
           document.getElementById('comments').insertAdjacentHTML('afterbegin',
             `
-            <hr>
-            <div class="card" style="border: none">
+            <div class="card" style="border: none" id="${response.data.comment._id}">  
               <div class="card-body">
                 <h4 class="card-title">${response.data.comment.title}</h4>
                 <p class="card-text">${response.data.comment.content}</p>
                 <p>
-                  <form method="POST" align="right" action="/reviews/${response.data.comment.reviewId}/comments/${response.data.comment._id}?_method=DELETE">
-                    <button class="btn btn-link" type="submit">Delete</button>
-                  </form>
+                  <button class="btn btn-link delete-comment" data-comment-id="${response.data.comment._id}">Delete</button>
                 </p>
               </div>
-            </div>`
-        )})
+            </div>
+            `
+          );
+          deleteComment();
+        })
         .catch(function (error) {
           console.log(error);
           alert('There was a problem saving your comment. Please try again.')
         });
   });
+}
+
+if (document.querySelectorAll('.delete-comment')) {
+  deleteComment();
+}
+
+function deleteComment() {
+  document.querySelectorAll('.delete-comment').forEach((commentElement) => {
+    commentElement.addEventListener('click', (e) => {
+      console.log("click!")
+      let commentId = e.target.getAttribute('data-comment-id')
+      console.log(e.target)
+      axios.delete(`${window.location.pathname}/comments/${commentId}`)
+        .then(response => {
+          console.log(response);
+          comment = document.getElementById(commentId);
+          console.log(comment.parentNode);
+          comment.parentNode.removeChild(comment);
+         })
+        .catch(error => {
+          console.log(error)
+          alert('There was an error deleting this comment.')
+        });
+    })
+  })
 }
