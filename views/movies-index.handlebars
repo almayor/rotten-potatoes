@@ -4,14 +4,9 @@
         <div class="card">
             <div class="col-md-11 card-body">
                 <h4 class="card-title">{{movie.title}}</h4>
-                <div class="container">
-                	{{#each movie.genre_names as |genre|}}
-                		<span class="badge badge-pill badge-light">
-                			{{genre}}
-                		</span>
-               		{{/each}}
-                </div>
-                <a href="/movies/{{movie.id}}"><img alt="{{movie.title}}" src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" title="{{movie.title}}"></a>
+                {{> genres genres=movie.genres}}
+               	<img alt="{{movie.title}}" src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" title="{{movie.title}}">
+               	<a href="/movies/{{movie.id}}" class="stretched-link"></a></a>
             </div>
         </div>
     {{/each}}

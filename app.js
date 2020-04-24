@@ -6,6 +6,10 @@ var exphbs = require('express-handlebars');
 
 const app = express()
 
+// This tells your app to allow parsing of JSON, which we need when we use Axios.
+app.use(bodyParser.json());
+// This tells your `Express.js` app to serve all client-side assets in its `public` folder.
+app.use(express.static('public'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));

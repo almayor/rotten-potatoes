@@ -24,7 +24,7 @@ module.exports = function(app) {
 	app.get('/reviews/:id', (req, res) => {
 		Review.findById(req.params.id).lean()
 		.then(review => {
-	  		Comment.find({ reviewId: req.params.id }).lean()
+	  		Comment.find({ reviewId: req.params.id }).sort('-date').lean()
 	  		.then(comments => res.render('reviews-show', {
 	  			review: review, comments: comments
 	  		}))

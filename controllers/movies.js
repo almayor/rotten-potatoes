@@ -21,8 +21,12 @@ module.exports = function (app) {
         	);
 
         	for (let i = 0; i < movies.length; i++)
-                movies[i].genre_names = movies[i].genre_ids.map(id => genreMap[id]);
+                movies[i].genres = movies[i].genre_ids.map(id => ({
+                    name: genreMap[id],
+                    id: id
+                }));
 
+            console.dir(movies[0].genres);
         	res.render('movies-index', { movies: movies });
         })
         .catch(console.error)

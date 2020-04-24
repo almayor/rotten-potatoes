@@ -1,22 +1,28 @@
 <div class="text-right">
     <a href="/movies/{{movie.id}}/reviews/new" class="btn btn-primary">New Review</a>
 </div>
+
 <div class="row">
     <div class="col-sm-4">
         <img class="img-responsive" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}"/>
     </div>
+
     <div class="col-sm-8">
         <h1>{{movie.title}}</h1>
+        {{> genres genres=movie.genres}}
         <p class="lead">{{movie.overview}}</p>
     </div>
+
     <div class="col-sm-12">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
+        </div>
     </div>
-    <div class="col-sm-12">
-        <h1 class="col-sm-6 col-sm-offset-3">Reviews</h1>
+</div>
+<div class="row mb-3">
+    <div class="col-md-6 col-md-offset-5">
         {{#each reviews}}
-            {{> review}}
+            {{> review review=this}}
         {{/each}}
     </div>
 </div>

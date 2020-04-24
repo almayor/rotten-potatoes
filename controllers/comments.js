@@ -8,12 +8,12 @@ module.exports = (app) => {
     app.post('/reviews/:reviewId/comments', (req, res) => {
         Comment.create(req.body)
         .then(comment => {
-            console.log(comment);
-            res.redirect(`/reviews/${req.params.reviewId}`);
+            res.status(200).send({ comment: comment });
         })
         .catch((err) => {
-            console.log(err.message);
-        });
+            console.log(err);
+            res.status(400).send({ err: err })
+        })
     });
 
     // DELETE
