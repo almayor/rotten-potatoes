@@ -8,7 +8,7 @@ Following a [tutorial](https://www.makeschool.com/academy/track/rotten-potatoes-
  - AJAX
  - jQuery
 
---
+---
 
 To run the website
  
