@@ -43,7 +43,6 @@ module.exports = function(app) {
             ])
             .then(responses => {
                 const [movie, videos, reviews] = responses;
-                console.log(movie);
                 movie.trailer_youtube_id = (
                     videos.youtube[0] &&
                     videos.youtube[0].source
