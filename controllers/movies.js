@@ -10,16 +10,18 @@ module.exports = function(app) {
 
     // INDEX
     app.get('/', (req, res) => {
-        if (req.query.page <= 0 || req.query.page >= 1000)
+        if (req.query.page === undefined)
+            res.redirect("/?page=1")
+        else if (req.query.page <= 0 || req.query.page >= 1000)
             res.status(400).send("Only pages between 1-1000 are accepted");
         else {
             moviedb.miscNowPlayingMovies({
-                    page: req.query.page ? req.query.page : 1
+                    page: req.query.page
                 })
                 .then(movies => {
                     res.render('movies-index', {
                         movies: movies.results,
-                        page: req.query.page ? req.query.page : 1
+                        page: req.query.page
                     });
                 })
                 .catch(console.error)
