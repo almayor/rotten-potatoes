@@ -1,8 +1,8 @@
 <div class="container">
-<h1>Now Playing</h1>
+    <h1>Now Playing</h1>
     <div class="card-columns my-3">
         {{#each movies}}
-         <div class="card">
+        <div class="card">
             <div class="card-body text-center">
                 <h4 class="card-title display-6" style="font-size: 3vw">{{this.title}}</h4>
             </div>
@@ -13,3 +13,26 @@
     </div>
 </div>
 
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-12">
+            <nav class="d-flex flex-row">
+                <a id="prev-link" class="btn btn-light btn-lg">Previous</a>
+                <a id="next-link" class="btn btn-light ml-auto btn-lg">Next</a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = parseInt(urlParams.get('page'));
+    if (page > 1)
+        $("#prev-link").attr("href", `${window.location.origin}/?page=${page - 1}`);
+    else
+        $("#prev-link").remove();
+    if (page < 1000)
+        $("#next-link").attr("href", `${window.location.origin}/?page=${page + 1}`);
+    else
+        $("#next-link").remove();
+</script>
