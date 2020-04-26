@@ -1,11 +1,7 @@
 $(document).ready(function () {
-  refreshEventListeners();
-})
-
-function refreshEventListeners() {
   $("#new-comment").find(":button").click(createComment);
   $(".delete-comment").click(deleteComment)
-}
+})
 
 function createComment () {
   let comment = {};
@@ -37,12 +33,12 @@ function showComment (comment) {
         <h4 class="card-title">${comment["title"]}</h4>
         <p class="card-text">${comment.content}</p>
         <!-- Delete link -->
-        <button class="btn btn-link float-right delete-comment" data-comment-id="${comment._id}">Delete</button>
+        <button class="btn btn-link float-right delete-comment">Delete</button>
       </div>
     </div>
     `
   );
-  refreshEventListeners();
+  $(`[comment-id=${comment._id}]`).find(".delete-comment").click(deleteComment);
 }
 
 function deleteComment () {
