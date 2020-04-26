@@ -1,21 +1,35 @@
 <!-- views/reviews-show.handlebars -->
+<div class="container">
+    <div class="row mb-3 mx-2">
+        <div class="col-md-8">
+            <div name="review" review-id="{{review._id}}" class="mx-0">
+                <!-- Review form -->
+                <h2 class="mb-3">{{review.title}}</h2>
+                <h5 class="font-italic font-weight-light mb-3">
+                <a class="text-reset" href="/movies/{{review.movieId}}">{{review.movieTitle}}</a>
+                </h5>
+                <h4 class="font-weight-bold">{{review.rating}} / 5</h4>
+                <p style="white-space: pre-line">
+                    {{review.description}}
+                </p>
+                <!-- Buttons -->
+                <form align="right" method="POST" action="/reviews/{{review._id}}?_method=DELETE">
+                    <a href="/reviews/{{review._id}}/edit" class="btn btn-link">Edit</a>
+                    <button class="btn btn-link" type="submit">Delete</button>
+                </form>
+            </div>
 
-<a href="/movies/{{review.movieId}}">Back to movie</a>
-<div class="row mb-3">
-  <div class="col-md-6 col-md-offset-3">
-
-    <!-- Review form -->
-    {{> review review=review}}
-
-    <!-- Comment form -->
-    {{> comment-form}}
-
-    <!-- Show Comments -->
-    <div id="comments">
-        {{#each comments}}
-            {{> comment}}
-        {{/each}}
+            <!-- Comment form -->
+            {{> comment-form}}
+            
+            <!-- Show Comments -->
+            <div name="comments" class="mx-0 my-5">
+                {{#each comments}}
+                    {{> comment}}
+                {{/each}}
+            </div>
+        </div>
     </div>
-    <hr>
-  </div>
 </div>
+
+<script src="/javascript/comment-ajax.js"></script>

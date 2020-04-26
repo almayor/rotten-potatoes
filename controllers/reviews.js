@@ -5,21 +5,6 @@ const Comment = require('../models/comment');
 
 module.exports = function(app) {
 
-	// NEW
-	app.get('/movies/:movieId/reviews/new', (req, res) => {
-	  res.render('reviews-new', { movieId: req.params.movieId });
-	});
-	
-	// CREATE
-	app.post('/movies/:movieId/reviews', (req, res) => {
-	  Review.create(req.body)
-	  .then(review => {
-	    console.log(review);
-	    res.redirect(`/movies/${review.movieId}`);
-	  })
-	  .catch(err => console.log(err.message))
-	});
-
 	// SHOW
 	app.get('/reviews/:id', (req, res) => {
 		Review.findById(req.params.id).lean()

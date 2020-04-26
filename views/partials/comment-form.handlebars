@@ -1,9 +1,9 @@
 <!-- views/partials/comment-form.handlebars -->
 
-<form action="#" id="new-comment">
-  <input class="form-control" type="hidden" value="{{review._id}}" name="reviewId">
-  <fieldset>
+<div id="new-comment" reviewId="{{review._id}}">
+
     <legend>Add a Comment</legend>
+
     <!-- TITLE -->
     <div class="form-group">
       <label for="comment-title">Title</label><br>
@@ -23,10 +23,7 @@
       rows="3"
       placeholder="Your comment..."/></textarea>
     </div>
-  </fieldset>
 
   <!-- BUTTON -->
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">Save Comment</button>
-  </div>
-</form>
+  <button class="btn btn-primary" type="button">Save Comment</button>
+</div>

@@ -8,29 +8,16 @@ module.exports = function (app) {
 	const MovieDb = require('moviedb-promise');
 	const moviedb = new MovieDb(API_KEY);
 
+    // INDEX
     app.get('/', (req, res) => {
-        Promise.all([
-            moviedb.miscNowPlayingMovies(),
-            moviedb.genreMovieList(),
-        ])
-        .then(responses => {
-        	const movies = responses[0].results;
-        	const genreList = responses[1].genres;
-        	const genreMap = Object.fromEntries(
-        		genreList.map(genre => [genre.id, genre.name])
-        	);
-
-        	for (let i = 0; i < movies.length; i++)
-                movies[i].genres = movies[i].genre_ids.map(id => ({
-                    name: genreMap[id],
-                    id: id
-                }));
-
-        	res.render('movies-index', { movies: movies });
+        moviedb.miscNowPlayingMovies()
+        .then(movies => {
+        	res.render('movies-index', { movies: movies.results });
         })
         .catch(console.error)
     })
 
+    // SHOW
     app.get('/movies/:id', (req, res) => {
         Promise.all([
             moviedb.movieInfo({ id: req.params.id }),
@@ -44,4 +31,26 @@ module.exports = function (app) {
         })
         .catch(console.error)
     })
+
+    // NEW REVIEW
+    app.get('/movies/:id/reviews/new', (req, res) => {
+        moviedb.movieInfo({ id: req.params.id })
+        .then(movie => {
+            res.render('reviews-new', {
+                movieId: req.params.id,
+                movieTitle: movie.title
+            });
+        })
+        .catch(console.error)
+    });
+
+    // CREATE REVIEW
+    app.post('/movies/:id/reviews', (req, res) => {
+      Review.create(req.body)
+      .then(review => {
+        console.log(review);
+        res.redirect(`/reviews/${review._id}`);
+      })
+      .catch(err => console.log(err.message))
+    });
 }

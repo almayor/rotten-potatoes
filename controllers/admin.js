@@ -8,8 +8,7 @@ module.exports = (app) => {
   app.get('/admin', (req, res) => {
     Review.find().lean()
       .then(reviews => {
-          console.dir(reviews);
-          res.render('admin', { reviews: reviews });
+        res.render('admin', { reviews: reviews });
       })
       .catch(error => {
         console.log(error);

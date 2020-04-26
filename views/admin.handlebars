@@ -1,27 +1,38 @@
 <!-- admin.handlebars -->
-
-<h2>Reviews</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Movie Title</th>
-      <th scope="col">Title</th>
-      <th scope="col">Rating</th>
-      <th scope="col">Description</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each reviews}}
-      <tr id="{{this._id}}">
-        <th scope="row">{{this._id}}</th>
-        <td>{{this.movieTitle}}</td>
-        <td>{{this.title}}</td>
-        <td>{{this.rating}}</td>
-        <td>{{this.description}}</td>
-        <td><button class="btn btn-link delete-review" data-review-id="{{this._id}}">Delete</button></td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2>Reviews</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Movie Title</th>
+              <th scope="col">Title</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Description</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each reviews}}
+            <tr id="{{this._id}}">
+              <td scope="row"><a href="/reviews/{{this._id}}" class="text-reset">{{this._id}}</a></td>
+              <td><a href="movies/{{this.movieId}}" class="text-reset">{{this.movieTitle}}</a></td>
+              <td>{{this.title}}</td>
+              <td>{{this.rating}}</td>
+              <td style="white-space: pre-line">{{this.description}}</td>
+              <td><input class="form-check-inline select-review" type="checkbox"></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div name="buttons" class="clearfix mt-8">
+        <button class="btn btn-danger float-right" id="confirm-delete">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/javascript/admin-ajax.js"></script>

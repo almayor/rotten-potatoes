@@ -5,3 +5,5 @@ Following a [tutorial](https://www.makeschool.com/academy/track/rotten-potatoes-
  - Handlebars
  - Bootstrap
  - Heroku
+ - AJAX
+ - jQuery

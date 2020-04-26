@@ -1,0 +1,14 @@
+<div class="card p-2">
+    <div class="card-body">
+        <h5 class="card-title">{{review.title}}</h5>
+        <h6 class="card-subtitle mb-4 font-weight-bolder">{{review.rating}} / 5</h6>
+        <div class="card-text">
+            <blockquote style="white-space: pre-line">{{review.description}}</blockquote>
+            <!-- Buttons -->
+            <form align="right" method="POST" action="/reviews/{{review._id}}?_method=DELETE">
+                <a href="/reviews/{{this._id}}" class="btn btn-link">View</a>
+                <button class="btn btn-link" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
