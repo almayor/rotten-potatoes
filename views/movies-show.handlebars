@@ -1,15 +1,11 @@
-<!-- <div class="text-right">
-    <a href="/movies/{{movie.id}}/reviews/new" class="btn btn-primary">New Review</a>
-</div> -->
-
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 order-sm-2">
+        <div class="col-md-6 order-md-2">
             <h2 class="display-5">{{movie.title}}</h2>
-            {{> genres genres=movie.genres}}
+            {{> badges genres=movie.genres rating=movie.vote_average}}
             <p class="lead">{{movie.overview}}</p>
         </div>
-        <div class="col-sm-6 order-sm-1 no-gutters text-center">
+        <div class="col-md-6 order-md-1 no-gutters text-center">
             <img class="img-fluid" src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"/>
         </div>
     </div>
