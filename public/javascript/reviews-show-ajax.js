@@ -4,8 +4,6 @@ $(document).ready(function () {
   $("#review-form").submit(editReview);
 })
 
-var test;
-
 function editReview(event) {
   event.preventDefault();
   console.log($(this).serialize())
@@ -63,10 +61,12 @@ function createComment(event) {
 }
 
 function deleteComment () {
-  const comment = $(this).parent().parent();
+  const comment = $(this).closest("[comment-id]");
+  const commentId = comment.attr("comment-id");
+
   $.ajax({
     type: "POST",
-    url: $(this).serialize()
+    url: `${window.location.pathname}/comments/${commentId}/?_method=DELETE`
   })
   .done(() => { comment.remove() })
   .fail(console.error)

@@ -1,6 +1,6 @@
 <!-- views/partials/comment-form.handlebars -->
 
-<form action="{{window.location.pathname}}/comments" method="POST" reviewId="{{review._id}}" id="comment-form">
+<form action="/reviews/{{review._id}}/comments" method="POST" reviewId="{{review._id}}" id="comment-form">
 
     <legend><h4>Add a Comment</h4></legend>
 
