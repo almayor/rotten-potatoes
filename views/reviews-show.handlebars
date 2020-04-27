@@ -4,9 +4,9 @@
         <div class="col-md-8">
             <div name="review" review-id="{{review._id}}" class="mx-0">
                 <!-- Review form -->
-                <h2 class="mb-3">{{review.title}}</h2>
+                <h3 class="mb-3">{{review.title}}</h3>
                 <h5 class="font-italic font-weight-light mb-3">
-                <a class="text-reset" href="/movies/{{review.movieId}}">{{review.movieTitle}}</a>
+                <a class="text-reset" href="/movies/{{review.movieId}}"><u>{{review.movieTitle}}</u></a>
                 </h5>
                 <h4 class="font-weight-bold">{{review.rating}} / 5</h4>
                 <p style="white-space: pre-line">

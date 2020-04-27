@@ -28,9 +28,9 @@ function createComment () {
 function showComment (comment) {
   $("[name='comments']").prepend(
     `
-    <div class="card" style="border: none" comment-id="${comment._id}">  
+    <div class="card border-bottom" style="border: none" comment-id="${comment._id}">  
       <div class="card-body">
-        <h4 class="card-title">${comment["title"]}</h4>
+        <h5 class="card-title">${comment["title"]}</h5>
         <p class="card-text">${comment.content}</p>
         <!-- Delete link -->
         <button class="btn btn-link float-right delete-comment">Delete</button>
