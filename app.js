@@ -3,6 +3,7 @@ const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var exphbs = require('express-handlebars');
+var favicon = require('serve-favicon');
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method')); // override with POST having ?_method=DELETE or ?_method=PUT
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 const reviews = require('./controllers/reviews')(app);
 const comments = require('./controllers/comments')(app);
