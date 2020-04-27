@@ -1,8 +1,8 @@
 <!-- views/partials/comment-form.handlebars -->
 
-<div id="new-comment" reviewId="{{review._id}}">
+<form action="{{window.location.pathname}}/comments" method="POST" reviewId="{{review._id}}" id="comment-form">
 
-    <legend>Add a Comment</legend>
+    <legend><h4>Add a Comment</h4></legend>
 
     <!-- TITLE -->
     <div class="form-group">
@@ -24,6 +24,8 @@
       placeholder="Your comment..."/></textarea>
     </div>
 
+    <input type="hidden" name="reviewId" value="{{review._id}}">
+
   <!-- BUTTON -->
-  <button class="btn btn-primary" type="button">Save Comment</button>
-</div>
+  <button class="btn btn-primary" type="submit">Save Comment</button>
+</form>

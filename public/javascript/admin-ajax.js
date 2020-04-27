@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip(); // enable tooltips
 	$("#confirm-delete").click(function() {
 		$(".select-review:checked").closest("tr").each(function() {
 			const reviewId = this["id"];

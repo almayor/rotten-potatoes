@@ -39,7 +39,7 @@ module.exports = function(app) {
                 }),
                 Review.find({
                     movieId: req.params.id
-                }).lean()
+                }).sort('-date').lean()
             ])
             .then(responses => {
                 const [movie, videos, reviews] = responses;
@@ -54,28 +54,4 @@ module.exports = function(app) {
             })
             .catch(console.error)
     })
-
-    // NEW REVIEW
-    app.get('/movies/:id/reviews/new', (req, res) => {
-        moviedb.movieInfo({
-                id: req.params.id
-            })
-            .then(movie => {
-                res.render('reviews-new', {
-                    movieId: req.params.id,
-                    movieTitle: movie.title
-                });
-            })
-            .catch(console.error)
-    });
-
-    // CREATE REVIEW
-    app.post('/movies/:id/reviews', (req, res) => {
-        Review.create(req.body)
-            .then(review => {
-                console.log(review);
-                res.redirect(`/reviews/${review._id}`);
-            })
-            .catch(err => console.log(err.message))
-    });
 }
